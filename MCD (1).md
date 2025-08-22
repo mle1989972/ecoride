@@ -7,11 +7,11 @@ _MAJ : 2025-08-22_
 ```mermaid
 erDiagram
   UTILISATEURS ||--o{ VEHICULES : owns
-  UTILISATEURS ||--o{ TRAJETS : drives
-  VEHICLES ||--o{ TRAJETS : used_for
-  UTILISATEURS }o--o{ TRAJETS : participates
-  TRIPS ||--o{ REVIEWS : has
-  UTILISATEURS ||--o{ REVIEWS : writes
+  UTILISATEURS ||--o{ TRAJETS : conduit
+  VEHICULES ||--o{ TRAJETS : used_for
+  UTILISATEURS }o--o{ TRAJETS : participe
+  TRAJETS ||--o{ AVIS : has
+  UTILISATEURS ||--o{ AVIS : writes
   UTILISATEURS ||--o{ CREDIT_LEDGER : has
   UTILISATEURS ||--|| PREFERENCES : has
   UTILISATEURS ||--o{ SUSPENSIONS : subject_of
@@ -47,7 +47,7 @@ erDiagram
     datetime created_at
   }
 
-  TRIPS {
+  TRAJETS {
     string id
     string driver_id
     string vehicle_id
@@ -71,7 +71,7 @@ erDiagram
     datetime created_at
   }
 
-  REVIEWS {
+  AVIS {
     string id
     string trip_id
     string reviewer_id
