@@ -1,0 +1,27 @@
+{
+  "name": "ecoride",
+  "version": "1.0.0",
+  "description": "EcoRide API",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "lint": "node --eval \"console.log('lint not configured')\"",
+    "create:admin": "node scripts/createAdmin.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "cors": "*",
+    "dotenv": "*",
+    "express": "*",
+    "helmet": "*",
+    "joi": "*",
+    "jsonwebtoken": "*",
+    "morgan": "*",
+    "nodemailer": "*",
+    "pg": "*",
+    "uuid": "*"
+  }
+}
