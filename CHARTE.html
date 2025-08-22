@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Charte Graphique — EcoRide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text:#2c3e50; --muted:#6b7d8a;
+      --primary:#2ecc71; --accent:#16a085;
+      --bg:#fff; --panel:#f5f7f7;
+    }
+    body { font:16px/1.6 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); margin:0; background:var(--bg);}
+    .container { max-width: 980px; margin: 0 auto; padding: 32px 20px;}
+    h1,h2,h3 { letter-spacing: -0.02em; }
+    header { background: linear-gradient(135deg, var(--primary), var(--accent)); color:#fff; padding:48px 0; }
+    header .container h1 { margin:0; font-size:40px; }
+    .panel { background:var(--panel); padding:16px 20px; border-radius:14px; }
+    code, pre { background:#f0f3f5; padding:2px 6px; border-radius:6px; }
+    pre { padding:12px; overflow:auto; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+    img { max-width:100%; height:auto; border-radius:12px; }
+    table { border-collapse: collapse; width:100%; }
+    th, td { border:1px solid #e7ecef; padding:8px 10px; text-align:left; }
+    footer { margin:40px 0 16px; color:var(--muted); font-size:14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Charte Graphique — EcoRide</h1>
+      <p>MAJ : 2025-08-22</p>
+    </div>
+  </header>
+  <main class="container">
+    <h2>1. Identité</h2>
+    <div class="panel">
+      <p><strong>Positionnement</strong> : application de covoiturage à impact positif. Ton visuel : moderne, accessible, rassurant.<br>
+      <strong>Valeurs</strong> : écologie, entraide, simplicité.</p>
+      <p><strong>Logo</strong> : versions livrées ci‑dessous.</p>
+      <div class="grid">
+        <img src="../public/brand/ecoride-logo-primary.svg" alt="Logo EcoRide (principal)">
+        <img src="../public/brand/ecoride-logo-mono-dark.svg" alt="Logo EcoRide (mono sombre)">
+      </div>
+    </div>
+
+    <h2>2. Couleurs</h2>
+    <img src="../public/brand/palette.png" alt="Palette EcoRide">
+    <table>
+      <thead><tr><th>Token</th><th>Hex</th></tr></thead>
+      <tbody>
+      <tr><td>primary</td><td>#2ecc71</td></tr><tr><td>primaryDark</td><td>#27ae60</td></tr><tr><td>accent</td><td>#16a085</td></tr><tr><td>neutralDark</td><td>#2c3e50</td></tr><tr><td>neutral</td><td>#95a5a6</td></tr><tr><td>neutralLight</td><td>#f5f7f7</td></tr><tr><td>info</td><td>#3498db</td></tr><tr><td>warning</td><td>#f39c12</td></tr><tr><td>danger</td><td>#e74c3c</td></tr><tr><td>success</td><td>#27ae60</td></tr><tr><td>black</td><td>#111111</td></tr><tr><td>white</td><td>#ffffff</td></tr>
+      </tbody>
+    </table>
+
+    <h2>3. Typographies</h2>
+    <ul>
+      <li><strong>Titres</strong> : Poppins (700/600)</li>
+      <li><strong>Texte</strong> : Inter / System UI (400/500)</li>
+      <li><strong>Mono</strong> : Consolas / Menlo / SF Mono</li>
+    </ul>
+
+    <h2>4. Grille & espacements</h2>
+    <ul>
+      <li>Conteneur max : 1200 px (desktop)</li>
+      <li>Grille : 12 colonnes (gutter 24 px) desktop, 4 colonnes mobile</li>
+      <li>Rayon : 16 px (cartes/boutons)</li>
+      <li>Ombres : 0 2 6 rgba(0,0,0,.08) / 0 12 30 rgba(0,0,0,.14)</li>
+    </ul>
+
+    <h2>5. Composants & CSS</h2>
+    <p>Inclure <code>/public/brand/ecoride-theme.css</code> dans le front.</p>
+    <pre><code>&lt;link rel="stylesheet" href="/brand/ecoride-theme.css"&gt;</code></pre>
+
+    <h2>6. Accessibilité</h2>
+    <ul>
+      <li>Contraste texte/fond ≥ 4.5:1</li>
+      <li>Focus visibles (outline 2 px)</li>
+      <li>Zones cliquables ≥ 44×44 px</li>
+    </ul>
+
+    <h2>7. Maquettes (wireframes)</h2>
+    <div class="grid">
+      <img src="../public/wireframes/desktop-home.png" alt="Wireframe Desktop Accueil">
+      <img src="../public/wireframes/desktop-list.png" alt="Wireframe Desktop Liste">
+    </div>
+    <div class="grid">
+      <img src="../public/wireframes/desktop-detail.png" alt="Wireframe Desktop Détail">
+      <img src="../public/wireframes/mobile-home.png" alt="Wireframe Mobile Accueil">
+    </div>
+    <div class="grid">
+      <img src="../public/wireframes/mobile-list.png" alt="Wireframe Mobile Liste">
+      <img src="../public/wireframes/mobile-detail.png" alt="Wireframe Mobile Détail">
+    </div>
+
+    <footer>© EcoRide — Charte Graphique</footer>
+  </main>
+</body>
+</html>

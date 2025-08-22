@@ -1,0 +1,61 @@
+/* EcoRide Theme Tokens */
+:root {
+  --ec-primary: #2ecc71;
+  --ec-primary-dark: #27ae60;
+  --ec-accent: #16a085;
+  --ec-neutral-dark: #2c3e50;
+  --ec-neutral: #95a5a6;
+  --ec-neutral-light: #f5f7f7;
+  --ec-info: #3498db;
+  --ec-warning: #f39c12;
+  --ec-danger: #e74c3c;
+  --ec-success: #27ae60;
+
+  --ec-radius: 16px;
+  --ec-radius-sm: 10px;
+  --ec-shadow-sm: 0 2px 6px rgba(0,0,0,.08);
+  --ec-shadow-lg: 0 12px 30px rgba(0,0,0,.14);
+
+  --ec-space-1: 4px;
+  --ec-space-2: 8px;
+  --ec-space-3: 12px;
+  --ec-space-4: 16px;
+  --ec-space-6: 24px;
+  --ec-space-8: 32px;
+  --ec-space-12: 48px;
+
+  --ec-font-sans: 'Poppins', 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --ec-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+/* Bootstrap variable overrides (if using Bootstrap) */
+:root {
+  --bs-primary: var(--ec-primary);
+  --bs-primary-rgb: 46, 204, 113;
+  --bs-success: var(--ec-success);
+  --bs-warning: var(--ec-warning);
+  --bs-danger: var(--ec-danger);
+  --bs-info: var(--ec-info);
+  --bs-body-font-family: var(--ec-font-sans);
+  --bs-border-radius: var(--ec-radius);
+}
+
+.ec-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .7rem 1.1rem; border-radius: var(--ec-radius);
+  border: none; background: var(--ec-primary); color: #fff; font-weight: 600;
+  box-shadow: var(--ec-shadow-sm); cursor: pointer;
+}
+.ec-btn:hover { filter: brightness(0.95); }
+.ec-btn-outline {
+  background: transparent; border: 2px solid var(--ec-primary); color: var(--ec-primary);
+}
+.ec-card {
+  background: #fff; border-radius: var(--ec-radius); padding: 1rem; box-shadow: var(--ec-shadow-sm);
+}
+.ec-navbar {
+  background: var(--ec-neutral-light); padding: .75rem 1rem; border-radius: var(--ec-radius);
+}
+.ec-badge-eco {
+  background: linear-gradient(135deg, var(--ec-primary), var(--ec-accent)); color: #fff; padding: .25rem .6rem; border-radius: 999px; font-size: .85rem;
+}
