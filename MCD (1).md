@@ -6,19 +6,19 @@ _MAJ : 2025-08-22_
 
 ```mermaid
 erDiagram
-  USERS ||--o{ VEHICULES : owns
-  USERS ||--o{ TRAJET : drives
-  VEHICLES ||--o{ TRIPS : used_for
-  USERS }o--o{ TRIPS : participates
+  UTILISATEURS ||--o{ VEHICULES : owns
+  UTILISATEURS ||--o{ TRAJETS : drives
+  VEHICLES ||--o{ TRAJETS : used_for
+  UTILISATEURS }o--o{ TRAJETS : participates
   TRIPS ||--o{ REVIEWS : has
-  USERS ||--o{ REVIEWS : writes
-  USERS ||--o{ CREDIT_LEDGER : has
-  USERS ||--|| PREFERENCES : has
-  USERS ||--o{ SUSPENSIONS : subject_of
-  USERS ||--o{ INCIDENTS : reports
-  TRIPS ||--o{ INCIDENTS : concerns
+  UTILISATEURS ||--o{ REVIEWS : writes
+  UTILISATEURS ||--o{ CREDIT_LEDGER : has
+  UTILISATEURS ||--|| PREFERENCES : has
+  UTILISATEURS ||--o{ SUSPENSIONS : subject_of
+  UTILISATEURS ||--o{ INCIDENTS : reports
+  TRAJETS ||--o{ INCIDENTS : concerns
 
-  USERS {
+  UTILISATEURS {
     string id
     string email
     string pseudo
@@ -36,7 +36,7 @@ erDiagram
     string notes
   }
 
-  VEHICLES {
+  VEHICULES {
     string id
     string user_id
     string make
