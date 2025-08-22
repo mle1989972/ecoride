@@ -6,8 +6,8 @@ _MAJ : 2025-08-22_
 
 ```mermaid
 erDiagram
-  USERS ||--o{ VEHICLES : owns
-  USERS ||--o{ TRIPS : drives
+  USERS ||--o{ VEHICULES : owns
+  USERS ||--o{ TRAJET : drives
   VEHICLES ||--o{ TRIPS : used_for
   USERS }o--o{ TRIPS : participates
   TRIPS ||--o{ REVIEWS : has
