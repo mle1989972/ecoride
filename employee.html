@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EcoRide â€” Espace EmployÃ©</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/favicon-180.png">
+  <meta property="og:title" content="EcoRide">
+  <meta property="og:description" content="Covoiturage Ã©co-responsable">
+  <meta property="og:image" content="./assets/img/og-image.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#16A34A">
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">
+      <img src="./assets/img/logo-ecoride.svg" alt="EcoRide" class="logo" style="height:28px">
+      <h1>EcoRide</h1>
+    </div>
+    <nav>
+      <a href="./index.html">Accueil</a>
+      <a href="./dashboard.html">Dashboard</a>
+      <a href="./admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Incidents</h2>
+      <div class="actions">
+        <select id="f-status">
+          <option value="">Tous</option>
+          <option>open</option>
+          <option>in_review</option>
+          <option>closed</option>
+        </select>
+        <button id="btn-load" class="btn">Actualiser</button>
+      </div>
+      <div id="incidents"></div>
+    </section>
+
+    <section class="card">
+      <h2>ModÃ©ration des avis</h2>
+      <div id="reviews"></div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>Â© <span id="year"></span> EcoRide â€” Projet ECF</small>
+  </footer>
+
+  <script type="module" src="./assets/employee.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EcoRide — Mentions légales</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/favicon-180.png">
+  <meta property="og:title" content="EcoRide — Mentions légales">
+  <meta property="og:description" content="Informations légales d’EcoRide">
+  <meta property="og:image" content="./assets/img/og-image.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#16A34A">
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">
+      <img src="./assets/img/logo-ecoride.svg" alt="EcoRide" class="logo" style="height:28px; margin-right:8px">
+      <h1>EcoRide</h1>
+    </div>
+    <nav>
+      <a href="./index.html">Accueil</a>
+      <a href="./dashboard.html">Dashboard</a>
+      <a href="./employee.html">Employé</a>
+      <a href="./admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Mentions légales</h2>
+      <p><strong>Éditeur :</strong> EcoRide SAS — 12 rue des Mobilités, 75000 Paris — SIREN 000 000 000</p>
+      <p><strong>Directeur de la publication :</strong> A. Dupont</p>
+      <p><strong>Contact :</strong> <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a></p>
+      <p><strong>Hébergement :</strong> Hébergeur Démo, 1 avenue du Cloud, 75000 Paris</p>
+      <h3>Données personnelles</h3>
+      <p>Les informations collectées sont utilisées pour la fourniture du service de covoiturage.
+         Conformément au RGPD, vous pouvez exercer vos droits à l’adresse <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a>.</p>
+      <h3>Propriété intellectuelle</h3>
+      <p>Le contenu du site EcoRide est protégé. Toute reproduction non autorisée est interdite.</p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>
+      © <span id="year"></span> EcoRide —
+      Contact : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a> —
+      <a href="./mentions-legales.html">Mentions légales</a>
+    </small>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const y=document.querySelector('#year'); if(y) y.textContent=new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>

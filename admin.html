@@ -1,0 +1,59 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EcoRide - Espace Admin</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/favicon-180.png">
+  <meta property="og:title" content="EcoRide">
+  <meta property="og:description" content="Covoiturage éco-responsable">
+  <meta property="og:image" content="./assets/img/og-image.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#16A34A">
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">
+      <img src="./assets/img/logo-ecoride.svg" alt="EcoRide" class="logo" style="height:28px">
+      <h1>EcoRide</h1>
+    </div>
+    <nav>
+      <a href="./index.html">Accueil</a>
+      <a href="./dashboard.html">Dashboard</a>
+      <a href="./employee.html">Employé</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Créer un compte employé</h2>
+      <form id="emp-form" class="grid" style="grid-template-columns:1fr 1fr">
+        <label>Email <input id="e-email" type="email" required /></label>
+        <label>Pseudo <input id="e-pseudo" required /></label>
+        <label style="grid-column:1/-1">Mot de passe (optionnel) <input id="e-pass" placeholder="Sinon généré" /></label>
+        <div class="actions" style="grid-column:1/-1">
+          <button class="btn primary" type="submit">Créer</button>
+        </div>
+      </form>
+      <p id="emp-msg" class="muted"></p>
+    </section>
+
+    <section class="card">
+      <h2>Statistiques (30 jours)</h2>
+      <canvas id="chart-trips" width="800" height="220" style="max-width:100%"></canvas>
+      <canvas id="chart-credits" width="800" height="220" style="max-width:100%; margin-top:18px"></canvas>
+      <p class="muted">Total des crédits en circulation : <b id="total-credits">—</b></p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>© <span id="year"></span> EcoRide — Projet ECF</small>
+  </footer>
+
+  <script type="module" src="./assets/admin.js"></script>
+</body>
+</html>
+

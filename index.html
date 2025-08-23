@@ -1,0 +1,113 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EcoRide - Rechercher un covoiturage éco-responsable</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/favicon-180.png">
+  <meta property="og:title" content="EcoRide">
+  <meta property="og:description" content="Covoiturage éco-responsable">
+  <meta property="og:image" content="./assets/img/og-image.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#16A34A">
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">
+      <img src="./assets/img/logo-ecoride.svg" alt="EcoRide" class="logo" style="height:28px">
+      <h1>EcoRide</h1>
+    </div>
+    <nav>
+      <a href="./login.html">Connexion</a>
+      <a href="./register.html" class="btn">Créer un compte</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Rechercher un trajet</h2>
+      <form id="search-form" class="grid">
+        <div>
+          <label for="from">Départ</label>
+          <input id="from" name="from" type="text" placeholder="Ex: Rouen" required />
+        </div>
+        <div>
+          <label for="to">Arrivée</label>
+          <input id="to" name="to" type="text" placeholder="Ex: Paris" required />
+        </div>
+        <div>
+          <label for="date">Date</label>
+          <input id="date" name="date" type="date" required />
+        </div>
+
+        <details class="filters">
+          <summary>Filtres</summary>
+          <div class="grid-compact">
+            <label><input type="checkbox" id="eco" /> Trajet &ldquo;éco &rdquo;</label>
+            <label>Prix max (€)
+              <input type="number" id="priceMax" min="0" step="1" placeholder="Ex: 20" />
+            </label>
+            <label>Durée max (min)
+              <input type="number" id="durationMax" min="1" step="1" placeholder="120" />
+            </label>
+            <label>Note min (1 à 5)
+              <input type="number" id="ratingMin" min="1" max="5" step="1" placeholder="4" />
+            </label>
+          </div>
+        </details>
+
+        <div class="actions">
+          <button type="submit" class="btn primary">Rechercher</button>
+          <button type="reset" class="btn">Réinitialiser</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="results" class="results"></section>
+    <section id="suggestion" class="suggestion hidden"></section>
+
+    <section class="card">
+  <h2>Présentation d’EcoRide</h2>
+  <p>
+    EcoRide est une plateforme de <strong>covoiturage éco-responsable</strong> qui met en relation des conducteurs et des passagers
+    pour des trajets quotidiens ou occasionnels. Notre objectif : <em>réduire les émissions</em>, <em>désengorger les routes</em> et
+    <em>faire baisser les coûts de transport</em> pour tous.
+  </p>
+  <div class="gallery">
+    <figure>
+      <img src="./assets/img/presentation-1.jpg" alt="Partage d’un trajet entre collègues">
+      <figcaption>Covoiturez malin</figcaption>
+    </figure>
+    <figure>
+      <img src="./assets/img/presentation-2.jpg" alt="Carte et itinéraire optimisé">
+      <figcaption>Itinéraires optimisés</figcaption>
+    </figure>
+    <figure>
+      <img src="./assets/img/presentation-3.jpg" alt="Communauté de covoitureurs EcoRide">
+      <figcaption>Communauté EcoRide</figcaption>
+    </figure>
+  </div>
+</section>
+  </main>
+
+<footer class="container footer">
+  <small>
+    © <span id="year"></span> EcoRide — Projet ECF
+    Contact : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a> —
+    <a href="./mentions-legales.html">Mentions légales</a>
+  </small>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    const y=document.querySelector('#year'); if(y) y.textContent=new Date().getFullYear();
+  });
+</script>
+
+
+  <script src="./assets/main.js" type="module"></script>
+</body>
+</html>
+

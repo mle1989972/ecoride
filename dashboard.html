@@ -1,0 +1,117 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EcoRide — Tableau de bord</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/favicon-180.png">
+  <meta property="og:title" content="EcoRide">
+  <meta property="og:description" content="Covoiturage éco-responsable">
+  <meta property="og:image" content="./assets/img/og-image.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#16A34A">
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">
+      <img src="./assets/img/logo-ecoride.svg" alt="EcoRide" class="logo" style="height:28px">
+      <h1>EcoRide</h1>
+    </div>
+    <nav>
+      <a href="./index.html">Accueil</a>
+      <a href="./employee.html">Espace employé</a>
+      <a href="./admin.html">Espace admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Mon compte</h2>
+      <p id="user-info" class="meta">Non connecté.</p>
+      <div class="actions">
+        <a class="btn" href="./login.html">Connexion</a>
+        <a class="btn" href="./register.html">Créer un compte</a>
+        <button id="logout" class="btn">Déconnexion</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Mes véhicules</h3>
+      <div id="vehicles"></div>
+      <details>
+        <summary>Ajouter un véhicule</summary>
+        <form id="vehicle-form" class="grid">
+          <label>Marque <input id="v-make" required /></label>
+          <label>Modèle <input id="v-model" required /></label>
+          <label>Couleur <input id="v-color" /></label>
+          <label>Énergie
+            <select id="v-energy" required>
+              <option value="electric">Électrique</option>
+              <option value="hybrid">Hybride</option>
+              <option value="petrol">Essence</option>
+              <option value="diesel">Diesel</option>
+            </select>
+          </label>
+          <label>Places <input id="v-seats" type="number" min="1" max="8" required /></label>
+          <div class="actions">
+            <button class="btn primary" type="submit">Ajouter</button>
+          </div>
+        </form>
+      </details>
+    </section>
+
+    <section class="card">
+      <h3>Mes préférences</h3>
+      <form id="prefs-form" class="grid">
+        <label><input type="checkbox" id="p-smoke" /> Fumeur accepté</label>
+        <label><input type="checkbox" id="p-animals" /> Animaux acceptés</label>
+        <label style="grid-column:1/-1">Notes
+          <input id="p-notes" placeholder="Infos utiles…" />
+        </label>
+        <div class="actions" style="grid-column:1/-1">
+          <button class="btn primary" type="submit">Enregistrer</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h3>Créer un trajet</h3>
+      <form id="trip-form" class="grid">
+        <label>Véhicule
+          <select id="t-vehicle" required></select>
+        </label>
+        <label>Départ (ville) <input id="t-from" required /></label>
+        <label>Arrivée (ville) <input id="t-to" required /></label>
+        <label>Date départ <input id="t-depart" type="datetime-local" required /></label>
+        <label>Date arrivée <input id="t-arrive" type="datetime-local" required /></label>
+        <label>Prix (€) <input id="t-price" type="number" min="0" step="1" required /></label>
+        <label>Places totales <input id="t-seats" type="number" min="1" max="8" required /></label>
+        <div class="actions" style="grid-column:1/-1">
+          <button class="btn primary" type="submit">Publier</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h3>Mes prochains trajets (chauffeur)</h3>
+      <div id="my-trips"></div>
+      <p class="muted">Astuce : cette liste filtre les trajets publics par votre pseudo (temporaire).</p>
+    </section>
+  
+<section class="card">
+  <h3>Mes prochains trajets (passager)</h3>
+  <div id="my-trips-passenger"></div>
+</section>
+</main>
+
+  <footer class="container footer">
+    <small>© <span id="year"></span> EcoRide — Projet ECF</small>
+  </footer>
+
+  <script type="module" src="./assets/dashboard.js"></script>
+</body>
+</html>
+
