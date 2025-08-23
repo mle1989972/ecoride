@@ -1,4 +1,3 @@
-
 # Charte Graphique — EcoRide
 _MAJ: 2025-08-22_
 
