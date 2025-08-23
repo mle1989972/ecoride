@@ -1,0 +1,12 @@
+<footer class="container footer">
+  <small>
+    © <span id="year"></span> EcoRide —
+    Contact : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a> —
+    <a href="./mentions-legales.html">Mentions légales</a>
+  </small>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    const y=document.querySelector('#year'); if(y) y.textContent=new Date().getFullYear();
+  });
+</script>
