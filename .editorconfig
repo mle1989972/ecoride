@@ -1,0 +1,31 @@
+# EditorConfig helps developers define and maintain consistent coding styles.
+# Place this file at the repository root.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Default indentation
+indent_style = space
+indent_size = 2
+
+# Makefiles keep tabs
+[Makefile]
+indent_style = tab
+
+# Markdown: keep trailing spaces (for line breaks)
+[*.md]
+trim_trailing_whitespace = false
+
+# JSON/YAML
+[*.{json,yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# JS/TS/HTML/CSS
+[*.{js,ts,html,css}]
+indent_style = space
+indent_size = 2

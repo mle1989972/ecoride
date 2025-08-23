@@ -1,0 +1,17 @@
+# Ignore dependencies and build artifacts
+node_modules
+dist
+build
+coverage
+.tmp
+tmp
+
+# VCS
+.git
+
+# Env files
+.env
+.env.*.local
+
+# Generated
+docker/postgres/init/*

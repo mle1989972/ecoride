@@ -1,176 +1,303 @@
+# EcoRide — TP Développeur Web & Web Mobile
 
-# EcoRide — Plateforme de covoiturage (ECF TP Développeur Web & Web Mobile)
-
-Application web de covoiturage focalisée sur l'impact écologique (voitures électriques mises en avant) et l'économie d'usage.
-
-> **Liens utiles (à remplacer par les vôtres)**  
-> • Déploiement Front : https://…  
-> • Déploiement API : https://…  
-> • Dépôt GitHub (public) : https://github.com/…/ecoride  
-> • Board Kanban (Trello/Notion/Jira) : https://…  
+Projet **back + front** pour une plateforme de covoiturage.  
+Objectifs ECF couverts : authentification, recherche et publication de trajets, participation avec double confirmation, gestion des crédits, avis & modération, incidents (employé), administration (employés + statistiques), **front statique** (HTML/CSS/JS), **base relationnelle (PostgreSQL)** et **NoSQL (MongoDB)**.
 
 ---
 
-## 1) Fonctionnalités (US)
+## 🧱 Stack technique
 
-- **US1 – Accueil** : présentation EcoRide, barre de recherche (villes + date), footer (mail + mentions légales).  
-- **US2 – Menu** : Accueil, Covoiturages, Connexion, Contact.  
-- **US3 – Liste des covoiturages** : après saisie des villes + date, affichage des trajets **avec places > 0** ; si aucun trajet, proposer la **date disponible la plus proche**. Cartes avec pseudo, photo, **note chauffeur**, **places restantes**, **prix**, **horaires**, **mention "écologique"** si véhicule électrique, bouton **Détail**.  
-- **US4 – Filtres** : écologique, **prix max**, **durée max**, **note minimale**.  
-- **US5 – Détail d’un covoiturage** : infos étendues, **avis** sur le conducteur, **marque/modèle/énergie** du véhicule, **préférences** du conducteur.  
-- **US6 – Participer** : bouton accessible si connecté, **places restantes** et **crédits disponibles** ; **double confirmation**, débit crédits, décrément places, enregistrement côté passager. Redirection vers login/inscription sinon.  
-- **US7 – Compte** : inscription avec **pseudo, mail, mot de passe sécurisé**, attribution **+20 crédits** à la création.  
-- **US8 – Espace utilisateur** : choisir rôle(s) (chauffeur/passager), gérer **véhicules** (plaque, 1ère immat., marque/modèle/couleur, **places**), **préférences** (fumeur, animaux, + perso).  
-- **US9 – Saisir un voyage (chauffeur)** : villes départ/arrivée, date/heure, **prix** (plateforme retient **2 crédits**), sélection du véhicule.  
-- **US10 – Historique / Annulation** : liste des covoiturages (chauffeur & passager), annulation, **maj crédits/places**, **mail aux passagers si annulation chauffeur**.  
-- **US11 – Démarrer / Arriver** : workflow start → arrive ; **mail** aux passagers pour valider le trajet, **avis** + **note** (modération).  
-- **US12 – Espace Employé** : **modération** des avis, gestion des **incidents** (trajets mal passés) avec récap (n° trajet, pseudos, mails, lieux, dates).  
-- **US13 – Espace Admin** : création **comptes employés**, **suspensions** utilisateurs/employés, **2 graphiques** (covoiturages/jour, crédits gagnés/jour) + **total crédits** plateforme. **Le compte admin est créé en amont** (hors app).
+- **Backend** : Node.js (ESM) / Express, PostgreSQL (pg), JWT (jsonwebtoken), Joi (validation), Nodemailer (emails)
+- **NoSQL** : MongoDB (journalisation d’événements via `src/mongo/`)
+- **Frontend** : HTML5 + CSS + JS (fetch), statique servi par Express (`/public`)
+- **Sécurité** : Helmet, CORS, gestion d’erreurs centralisée
+- **Outils** : Docker Compose (Postgres, Mongo, Mailhog, App), Vitest + Supertest (tests)
 
 ---
 
-## 2) Pile technique
-
-- **Front** : HTML5 + CSS (Bootstrap) + JavaScript (Vanilla).  
-- **API** : Node.js + Express (ou PHP/PDO si vous préférez).  
-- **SQL** : PostgreSQL / MySQL / MariaDB (au choix).  
-- **NoSQL** : MongoDB (logs/modération/queue email).  
-- **Déploiement** : Vercel (front), Render/Fly.io/Heroku/Azure (API) — au choix.  
-
-> Aucune techno n’est imposée, sauf l’usage d’une **BD relationnelle + une BD NoSQL**.
-
----
-
-## 3) Architecture du dépôt
+## 📂 Arborescence
 
 ```
 ecoride/
-├─ docs/
-│  ├─ schema.sql          # Schéma SQL relationnel (obligatoire)
-│  ├─ MANUEL_UTILISATEUR.pdf
-│  ├─ CHARTE_GRAPHIQUE.pdf  # Palette & polices + exports des 3 maquettes desktop & 3 mobiles
-│  ├─ DOC_TECHNIQUE.pdf     # MCD/diagrammes, choix techniques, déploiement
-│  └─ GESTION_PROJET.pdf    # Explication du Kanban et méthode
-├─ public/                 # (si front statique) assets, index.html
-├─ src/                    # (si API Node) routes, controllers, services, models...
-│  └─ ...
-├─ scripts/
-│  └─ createAdmin.js       # Création du compte administrateur (hors app)
-├─ .env.example
-└─ README.md               # Ce fichier
+├── Dockerfile
+├── docker-compose.yml
+├── .dockerignore
+├── .gitignore
+├── .env.example
+├── README.md
+├── docs/
+│   └── schema.sql
+├── docker/
+│   └── postgres/
+│       └── init/
+│           ├── 01-schema.sql
+│           └── 02-seed.sql
+├── public/
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── trip.html
+│   ├── dashboard.html
+│   ├── employee.html
+│   ├── admin.html
+│   └── assets/
+│       ├── styles.css
+│       ├── main.js
+│       ├── login.js
+│       ├── register.js
+│       ├── trip.js
+│       ├── dashboard.js
+│       ├── employee.js
+│       └── admin.js
+├── scripts/
+│   └── createAdmin.js
+├── src/
+│   ├── server.js
+│   ├── app.js
+│   ├── config/
+│   │   └── db.js
+│   ├── middlewares/
+│   │   ├── auth.js
+│   │   ├── errorHandler.js
+│   │   ├── roles.js
+│   │   └── validate.js
+│   ├── routes/
+│   │   ├── index.js
+│   │   ├── admin.js
+│   │   ├── auth.js
+│   │   ├── participations.js
+│   │   ├── reviews.js
+│   │   ├── trips.js
+│   │   ├── vehicles.js
+│   │   ├── preferences.js
+│   │   └── incidents.js
+│   ├── controllers/
+│   │   ├── adminController.js
+│   │   ├── authController.js
+│   │   ├── participationsController.js
+│   │   ├── reviewsController.js
+│   │   ├── tripsController.js
+│   │   ├── vehiclesController.js
+│   │   ├── preferencesController.js
+│   │   └── incidentsController.js
+│   ├── emails/
+│   │   └── mailer.js
+│   ├── mongo/
+│   │   ├── client.js
+│   │   └── log.js
+│   ├── seed/
+│   │   └── seed.sql
+│   ├── tests/
+│   │   ├── health.test.js
+│   │   ├── auth.test.js
+│   │   └── trips.test.js
+│   └── utils/
+│       └── credits.js
 ```
 
 ---
 
-## 4) Prérequis
+## ⚙️ Prérequis
 
-- Node.js 20+ (si stack Node)  
-- Un serveur **SQL** (PostgreSQL/MySQL) accessible + un **MongoDB** (Atlas possible)  
-- Un compte SMTP pour l’envoi des mails (Nodemailer, Sendgrid, etc.)
-
-**Variables d’environnement (exemple)**
-
-| Variable        | Description |
-|----------------|-------------|
-| `DATABASE_URL` | Connexion SQL, ex. `postgres://user:pass@host:5432/ecoride` |
-| `MONGODB_URI`  | Connexion MongoDB (si utilisé) |
-| `JWT_SECRET`   | Secret JWT |
-| `SMTP_HOST` `SMTP_PORT` `SMTP_USER` `SMTP_PASS` | SMTP pour emails |
-| `SMTP_FROM`    | Ex. `EcoRide <noreply@ecoride.app>` |
-| `PORT`         | Port API (ex. 3000) |
+- Node.js 18+ (recommandé : 20)
+- PostgreSQL 14+
+- (Optionnel) MongoDB 6+ (pour la brique NoSQL)
+- (Optionnel) Docker + Docker Compose
 
 ---
 
-## 5) Installation locale (API Node.js — exemple)
+## 🔐 Variables d’environnement (`.env`)
 
+Copier `.env.example` vers `.env` puis compléter :
+
+```
+DATABASE_URL=postgres://user:pass@localhost:5432/ecoride
+JWT_SECRET=change-me
+# SMTP (optionnel - Mailhog en dev)
+SMTP_HOST=localhost
+SMTP_PORT=1025
+SMTP_USER=
+SMTP_PASS=
+SMTP_FROM="EcoRide <no-reply@ecoride.local>"
+# NoSQL (optionnel)
+MONGODB_URI=mongodb://localhost:27017/ecoride
+```
+
+> _Si `MONGODB_URI` n’est pas défini, le logging NoSQL est **désactivé** (no-op)._
+
+---
+
+## 🛠️ Installation (local)
+
+1) **Installer les dépendances**
 ```bash
-# 1) Cloner
-git clone https://github.com/votrecompte/ecoride.git
-cd ecoride
-
-# 2) Config env
-cp .env.example .env
-# éditer .env (DATABASE_URL, JWT_SECRET, SMTP…)
-
-# 3) Dépendances
 npm install
-
-# 4) Base de données (SQL)
-psql "$DATABASE_URL" -f docs/schema.sql
-# (Option) Données d'exemple
-psql "$DATABASE_URL" -f src/seed/seed.sql
-
-# 5) Démarrer
-npm run dev   # mode dev
-# npm start   # mode production
 ```
 
-### Création du compte administrateur (obligatoire)
-- L’admin n’est **pas** créé via l’application. Lancer un script dédié :  
-  ```bash
-  node scripts/createAdmin.js
-  ```
-- **Fournir les identifiants dans le MANUEL_UTILISATEUR.pdf** (section “Comptes de test”).
+2) **Créer la base** et le schéma
+```bash
+# Assurez-vous que DATABASE_URL pointe vers votre base
+psql "$DATABASE_URL" -f docs/schema.sql
+# (optionnel) données de démo
+psql "$DATABASE_URL" -f src/seed/seed.sql
+```
+
+3) **Lancer l’app**
+```bash
+npm start
+# Service: http://localhost:3000
+```
+
+4) **Créer un admin**
+```bash
+node scripts/createAdmin.js --email=admin@ecoride.local --pseudo=Admin --password=Admin123!
+```
 
 ---
 
-## 6) Endpoints API (MVP)
+## 🐳 Démarrage via Docker
 
-- `POST /api/auth/register` — Inscription (pseudo, email, password) → **+20 crédits**.  
-- `POST /api/auth/login` — Connexion (JWT).  
-- `GET  /api/trips` — Recherche par `from`, `to`, `date`, filtres `eco`, `priceMax`, `durationMax`, `ratingMin`.  
-- `POST /api/trips` — Créer un trajet (chauffeur).  
-- `POST /api/trips/:id/participations` — Participer (double confirmation).  
-- `POST /api/trips/:id/start` — Démarrer le trajet.  
-- `POST /api/trips/:id/arrive` — Arrivée + demande d’avis.  
-- `POST /api/reviews/:id/moderate` — (Employé) modération avis.  
-- `POST /api/admin/suspend/:userId` — (Admin) suspension de compte.  
-- `GET  /api/admin/stats` — (Admin) stats & graphiques.  
+1) **Lancer la stack**
+```bash
+docker compose up -d
+```
 
-> Voir `docs/DOC_TECHNIQUE.pdf` pour le modèle de données et les schémas d’API détaillés.
+- App : http://localhost:3000  
+- Postgres : 5432 (DB `ecoride` / `ecoride` / `ecoride`)  
+- Mongo : 27017  
+- Mailhog (emails de dev) : http://localhost:8025
 
----
+2) **Créer un admin dans le conteneur**
+```bash
+docker compose exec app node scripts/createAdmin.js   --email=admin@ecoride.local --pseudo=Admin --password=Admin123!
+```
 
-## 7) Sécurité (mesures clés)
-
-- **Validation** et **sanitization** (Joi/Zod) sur toutes les entrées.  
-- **Auth JWT** signée ; mots de passe **bcrypt**.  
-- **helmet** + **CORS** (origines autorisées) ; **rate limiting** sur auth.  
-- **RBAC** : routes protégées (user / employee / admin).  
-- **Logs** et audit (MongoDB) ; gestion des erreurs centralisée.
+> Le schéma et le seed sont injectés au boot via `docker/postgres/init/`.
 
 ---
 
-## 8) Déploiement (exemple)
+## 🧭 Parcours front
 
-- **API** : Render (Node) avec variables d’environnement (DATABASE_URL, JWT_SECRET, SMTP…).  
-- **Front** : Vercel (static/CSR).  
-- Vérifier CORS entre domaines.  
-- Renseigner les **liens déployés** dans ce README et dans la **copie à rendre**.
-
----
-
-## 9) Gestion de projet (Kanban)
-
-Colonnes recommandées : **Backlog** → **À faire (Sprint)** → **En cours** → **Terminé (dev)** → **Mergé (main)**.  
-Chaque fonctionnalité = une **carte** liée à une **branche** (feature/…) et une **PR**.
+- `GET /` → `public/index.html` : recherche trajets (filtres : éco, prix max, durée max, note min) + **suggestion de date** si aucun résultat
+- `GET /trip.html?id=...` : détail trajet + **double confirmation** de participation
+- `GET /login.html` / `GET /register.html`
+- `GET /dashboard.html` : véhicules (CRUD), préférences, **créer un trajet**, **mes trajets chauffeur & passager**
+- `GET /employee.html` (rôle `employee` ou `admin`) : incidents (liste + statut), **modération avis**
+- `GET /admin.html` (rôle `admin`) : **création d’employés**, **2 graphiques** (trajets/jour, crédits/jour) + total crédits
 
 ---
 
-## 10) Comptes de test (à compléter)
+## 🔌 API — endpoints principaux
 
-- **Admin (créé en amont)** : `admin@ecoride.app` / `…`  
-- **Employé** : `employee@ecoride.app` / `…`  
-- **Chauffeur** : `driver@ecoride.app` / `…`  
-- **Passager** : `rider@ecoride.app` / `…`  
+### Auth
+- `POST /api/auth/register` `{ pseudo, email, password }` → 201
+- `POST /api/auth/login` `{ email, password }` → 200 `{ token, user }`
+
+### Santé
+- `GET /api/health` → `{ ok: true }`
+
+### Trajets
+- `GET /api/trips?from=&to=&date=YYYY-MM-DD&eco=true&priceMax=&durationMax=&ratingMin=&limit=&offset=`
+- `GET /api/trips/:id`
+- `POST /api/trips` *(auth)* `{ vehicle_id, origin_city, destination_city, departure_time, arrival_time, price_cents, seats_total }`
+- `POST /api/trips/:id/start` *(driver)*
+- `POST /api/trips/:id/arrive` *(driver)*
+- `POST /api/trips/:id/cancel` *(driver)*
+
+### Mes trajets
+- `GET /api/trips/mine?role=driver|passenger|all&upcoming=true|false&status=CSV` *(auth)*
+
+### Participations
+- `POST /api/trips/:id/participations` *(auth)* — demande (double confirmation côté front)
+
+### Véhicules *(auth)*
+- `GET /api/vehicles`
+- `GET /api/vehicles/:id`
+- `POST /api/vehicles`
+- `PUT /api/vehicles/:id`
+- `DELETE /api/vehicles/:id` (refus si véhicule utilisé par un trajet actif)
+
+### Préférences *(auth)*
+- `GET /api/preferences`
+- `PUT /api/preferences` `{ smoke_allowed?, animals_allowed?, notes? }`
+
+### Avis
+- `POST /api/reviews` *(passager d’un trajet “arrived”)* `{ trip_id, rating, comment? }`
+- `GET /api/reviews/pending` *(employee/admin)*
+- `POST /api/reviews/:id/moderate` *(employee/admin)*
+
+### Incidents
+- `POST /api/incidents` *(participant/driver)* `{ trip_id, summary, description? }`
+- `GET /api/incidents[?status=open|in_review|closed]` *(employee/admin → tous, sinon → les miens)*
+- `PATCH /api/incidents/:id` *(employee/admin)* `{ status }`
+
+### Admin *(admin)*
+- `POST /api/admin/employees` `{ email, pseudo, password? }`
+- `POST /api/admin/suspend/:userId`
+- `GET /api/admin/stats` → séries (30j) + total crédits
 
 ---
 
-## 11) Licence
+## 🧪 Tests (Vitest + Supertest)
 
-Usage pédagogique (ECF).
+Ajouter dans `package.json` :
+```json
+{
+  "devDependencies": {
+    "vitest": "^1.6.0",
+    "supertest": "^6.3.4"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  }
+}
+```
+
+Configurer une base de test (`.env.test`) si possible, puis :
+```bash
+npm run test
+# ou en mode watch
+npm run test:watch
+```
+
+Tests fournis :
+- `src/tests/health.test.js`
+- `src/tests/auth.test.js`
+- `src/tests/trips.test.js`
 
 ---
 
-_Mis à jour le 2025-08-22._
+## 🔒 Rôles & sécurité
 
+- `user` (défaut), `employee`, `admin`
+- JWT Bearer dans `Authorization:`
+- Contrôles d’accès par middleware (`authRequired`, `requireRole`)
+- Emails : envoyés en **best-effort** (si SMTP indisponible → log console)
+
+---
+
+## 🚀 Déploiement (pistes)
+
+- Image Docker `Dockerfile`
+- Variables d’env à configurer : `DATABASE_URL`, `JWT_SECRET`, `MONGODB_URI` (optionnel), SMTP
+- Prévoir un reverse-proxy (Caddy/Nginx) + HTTPS
+
+---
+
+## 🧭 Conseils & troubleshooting
+
+- **Statique non servi** → vérifier `src/app.js` contient `express.static(..../public)`
+- **401 Unauthorized** → vérifier `Authorization: Bearer <token>` et `JWT_SECRET`
+- **Emails en dev** → Mailhog `http://localhost:8025` (si Docker)
+- **Postgres vide** → rejouer `docs/schema.sql` et `src/seed/seed.sql`
+
+---
+
+## 📜 Licence
+
+Projet pédagogique dans le cadre de l’ECF (usage éducatif).
+
+---
+
+**Bon courage ✨** — et si besoin, ouvre une issue ou ping pour de l’aide.
